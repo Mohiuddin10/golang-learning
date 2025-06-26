@@ -23,4 +23,7 @@ func main() {
 	})
 
 	fmt.Println("Ending the program")
+
+	sum := add
+	sum(50, 60)
 }
