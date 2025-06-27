@@ -26,4 +26,9 @@ func main() {
 
 	sum := add
 	sum(50, 60)
+
+	// code segment
+	// data segment
+	// stack
+	// Heap
 }
