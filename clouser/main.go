@@ -33,7 +33,22 @@ func init() {
 
 func main() {
 	call()
+
+	counter := createCounter() // counter is a closure
+	fmt.Println(counter())     // 1
+	fmt.Println(counter())     // 2
+	fmt.Println(counter())     // 3
 }
 
+func createCounter() func() int {
+	count := 0
+	return func() int {
+		count++
+		return count
+	}
+}
 
+// A closure is a function that remembers the variables from where it was created — even after that scope is gone.
 
+// In short:
+// ➡️ A function inside a function that can access outer function’s variables.
