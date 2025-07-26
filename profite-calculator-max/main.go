@@ -26,4 +26,14 @@ func main() {
 	fmt.Println("Ratio: ", ratio, "%")
 
 	fmt.Printf("EBT: %0.0f\nProfit: %0.0f\nRatio: %0.0f\n", earningsBeforeTax, earningAfterTax, ratio)
+
+	// formatted string   => That put a string + value in a variable
+	formattedEbt := fmt.Sprintf("Formatted EBT: %.0f\n", earningsBeforeTax)
+	formattedProfit := fmt.Sprintf("Formatted Profit: %.0f\n", earningAfterTax)
+	formattedRatio := fmt.Sprintf("Formatted Ratio: %.0f\n", ratio)
+
+	fmt.Print(formattedEbt, formattedProfit, formattedRatio)
+
+	// ===> If we want to use multiline string we can use `` but at that time \n will nor work
+
 }
