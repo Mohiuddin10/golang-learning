@@ -3,23 +3,17 @@ package main
 import "fmt"
 
 func main() {
-	var ravenue float64
-	var expenses float64
-	var taxRate float64
 
-	fmt.Print("Enter your total revenue: ")
-	fmt.Scan(&ravenue)
+	ravenue := getUserInput("Enter your total revenue: ")
+	expenses := getUserInput("Enter your total expenses: ")
+	taxRate := getUserInput("Enter your tax rate (in %): ")
 
-	fmt.Print("Enter your total expenses: ")
-	fmt.Scan(&expenses)
+	// earningsBeforeTax := ravenue - expenses
+	// taxAmount := earningsBeforeTax * (taxRate / 100)
+	// earningAfterTax := earningsBeforeTax - taxAmount
+	// ratio := earningsBeforeTax / earningAfterTax
 
-	fmt.Print("Enter your tax rate (in %): ")
-	fmt.Scan(&taxRate)
-
-	earningsBeforeTax := ravenue - expenses
-	taxAmount := earningsBeforeTax * (taxRate / 100)
-	earningAfterTax := earningsBeforeTax - taxAmount
-	ratio := earningsBeforeTax / earningAfterTax
+	earningsBeforeTax, earningAfterTax, ratio := calculateProfit(ravenue, expenses, taxRate)
 
 	fmt.Println("Earning Before Tax: ", earningsBeforeTax)
 	fmt.Println("Profit: ", earningAfterTax)
@@ -36,4 +30,18 @@ func main() {
 
 	// ===> If we want to use multiline string we can use `` but at that time \n will nor work
 
+}
+
+func getUserInput(infoText string) float64 {
+	var userInput float64
+	fmt.Print(infoText)
+	fmt.Scan(&userInput)
+	return userInput
+}
+
+func calculateProfit(ravenue, expenses, taxRate float64) (float64, float64, float64) {
+	earningsBeforeTax := ravenue - expenses
+	earningAfterTax := earningsBeforeTax - (1 - taxRate/100)
+	ratio := earningsBeforeTax / earningAfterTax
+	return earningsBeforeTax, earningAfterTax, ratio
 }
