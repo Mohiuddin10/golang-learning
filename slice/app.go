@@ -24,6 +24,9 @@ func main() {
 	fmt.Println(s4)
 	fmt.Println(len(s4))
 	fmt.Println(cap(s4))
+
+	var s5 []int
+	fmt.Println(s5)
 }
 
 // 1. slice from existing array
