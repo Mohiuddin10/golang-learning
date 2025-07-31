@@ -1,0 +1,5 @@
+Formatted EBT: 0
+
+Formatted Profit: -1
+
+Formatted Ratio: -0
