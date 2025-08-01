@@ -1,0 +1,7 @@
+SP =Stack Pointer
+BP=  Base Pointer
+IR = Instruction Register
+PC = Program Counter
+CU = control Unit
+ALU = Arithmetic Logic Unit
+General Purpose Register

@@ -1,5 +1,3 @@
-Formatted EBT: 0
-
-Formatted Profit: -1
-
-Formatted Ratio: -0
+EBT: 1000.0
+Profit: 999.1
+Ratio: 1.001/n

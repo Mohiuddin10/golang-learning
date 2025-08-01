@@ -6,25 +6,21 @@ import (
 	"os"
 )
 
-func handleError(err error) {
-	fmt.Println("Error:", err)
-}
-
 func main() {
 	readStoredValues()
-	ravenue, err := getUserInput("Enter your total revenue: ")
-	if err != nil {
-		handleError(err)
-		return
-	}
-	expenses, err := getUserInput("Enter your total expenses: ")
-	if err != nil {
-		handleError(err)
-		return
-	}
-	taxRate, err := getUserInput("Enter your tax rate (in %): ")
-	if err != nil {
-		handleError(err)
+	ravenue, err1 := getUserInput("Enter your total revenue: ")
+	// if err != nil {
+	// 	handleError(err)
+	// 	return
+	// }
+	expenses, err2 := getUserInput("Enter your total expenses: ")
+	// if err != nil {
+	// 	handleError(err)
+	// 	return
+	// }
+	taxRate, err3 := getUserInput("Enter your tax rate (in %): ")
+	if err1 != nil || err2 != nil || err3 != nil {
+		fmt.Println("Error:", err1)
 		return
 	}
 
@@ -49,7 +45,7 @@ func main() {
 	fmt.Print(formattedEbt, formattedProfit, formattedRatio)
 
 	// ===> If we want to use multiline string we can use `` but at that time \n will nor work
-	storeCalculatedValue(formattedEbt, formattedProfit, formattedRatio)
+	storeCalculatedValue(earningsBeforeTax, earningAfterTax, ratio)
 }
 
 func getUserInput(infoText string) (float64, error) {
@@ -71,13 +67,11 @@ func calculateProfit(ravenue, expenses, taxRate float64) (float64, float64, floa
 	return earningsBeforeTax, earningAfterTax, ratio
 }
 
-func storeCalculatedValue(formattedEbt, formattedProfit, formattedRatio string) {
-	ebt := fmt.Sprint(formattedEbt)
-	profit := fmt.Sprint(formattedProfit)
-	ratio := fmt.Sprint(formattedRatio)
+func storeCalculatedValue(ebt, profit, ratio float64) {
+	result := fmt.Sprintf("EBT: %.1f\nProfit: %.1f\nRatio: %.3f/n", ebt, profit, ratio)
 
 	// Here you can store the values in a database or a file
-	os.WriteFile("calculated_values.txt", []byte(ebt+"\n"+profit+"\n"+ratio), 0644)
+	os.WriteFile("calculated_values.txt", []byte(result), 0644)
 }
 
 func readStoredValues() {
