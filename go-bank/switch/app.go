@@ -1,34 +1,15 @@
 package main
 
 import (
-	"errors"
 	"fmt"
-	"os"
-	"strconv"
+
+	"example.com/switch/fileOps"
 )
 
 const accountFile = "balance.txt"
 
-func readBalanceFromFile() (float64, error) {
-	data, err := os.ReadFile(accountFile)
-	if err != nil {
-		return 1000, errors.New("could not read balance file, initializing with default balance")
-	}
-	balanceText := string(data)
-	balance, err := strconv.ParseFloat(balanceText, 64)
-	if err != nil {
-		return 1000, errors.New("could not parse balance, initializing with default balance")
-	}
-	return balance, nil
-}
-
-func writeBalanceToFile(balance float64) {
-	balanceText := fmt.Sprint(balance)
-	os.WriteFile(accountFile, []byte(balanceText), 0644)
-}
-
 func main() {
-	accountBalance, err := readBalanceFromFile()
+	accountBalance, err := fileOps.GetFloatNumberFromFile(accountFile)
 	if err != nil {
 		fmt.Println("Error reading balance:", err)
 	}
@@ -54,7 +35,7 @@ func main() {
 				continue
 			} else {
 				accountBalance += dipositeAmount
-				writeBalanceToFile(accountBalance)
+				fileOps.WriteFloatToFile(accountBalance, accountFile)
 			}
 
 			fmt.Printf("You have successfully deposited $%.2f. New balance is: $%.2f\n", dipositeAmount, accountBalance)
@@ -69,7 +50,7 @@ func main() {
 				fmt.Println("Insufficient balance for this withdrawal.")
 			} else {
 				accountBalance -= WithdrawAmount
-				writeBalanceToFile(accountBalance)
+				fileOps.WriteFloatToFile(accountBalance, accountFile)
 				fmt.Printf("You have successfully withdrawn $%.2f. New balance is: $%.2f\n", WithdrawAmount, accountBalance)
 			}
 		default:
