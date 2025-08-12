@@ -10,6 +10,8 @@ func main() {
 	userFirstName := getUserData("Please enter your first name: ")
 	userLastName := getUserData("Please enter your last name: ")
 	userBirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
+	userEmail := getUserData("Please enter your email: ")
+	userPassword := getUserData("Please enter your password: ")
 
 	// ... do something awesome with that gathered data!
 
@@ -22,6 +24,10 @@ func main() {
 
 	var appUser *user.User
 	appUser, err := user.NewUser(userFirstName, userLastName, userBirthdate)
+
+	appAdmin := user.NewAdmin(userEmail, userPassword)
+
+	appAdmin.OutPutUser()
 
 	if err != nil {
 		fmt.Println(err)
