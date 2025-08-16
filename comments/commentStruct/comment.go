@@ -11,9 +11,9 @@ import (
 )
 
 type Comment struct {
-	Author    string
-	Comment   string
-	CreatedAt time.Time
+	Author    string    `json:"author"`
+	Comment   string    `json:"comment"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 func New(author, comment string) (*Comment, error) {

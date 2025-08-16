@@ -17,6 +17,6 @@ func GetUserData(prompt string) (string, error) {
 
 	text = strings.TrimSuffix(text, "\n")
 	text = strings.TrimSuffix(text, "\r")
-	text = strings.TrimSuffix(text, "?")
+
 	return text, nil
 }
