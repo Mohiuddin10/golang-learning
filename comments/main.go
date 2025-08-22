@@ -7,6 +7,10 @@ import (
 	"example.com/comment/getComment"
 )
 
+type saver interface {
+	saveData() error
+}
+
 func main() {
 	author, err := getComment.GetUserData("Author Name:")
 	if err != nil {
@@ -19,13 +23,17 @@ func main() {
 		return
 	}
 	fmt.Printf("Anthou: %v\n Comment: %v\n", author, comment)
+
+
+
+
 	newComment, err := commentStruct.New(author, comment)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	newComment.DisplayComment()
-	newComment.SaveData()
+	err = saver(newComment).saveData()
 }
 
 // Objectives ==>
