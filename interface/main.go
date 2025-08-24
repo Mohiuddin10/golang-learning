@@ -32,6 +32,21 @@ func test(data interface{}) {
 	}
 }
 
+func checkInt(data interface{}) {
+	intData, ok := data.(int)
+	if ok {
+		number := intData + 10
+		fmt.Println("Integer data Type", number)
+		return
+	}
+	float64Data, ok := data.(float64)
+	if ok {
+		newFloat := float64Data + 10.0
+		fmt.Println("Float data Type", newFloat)
+		return
+	}
+}
+
 func main() {
 	var m Device = phone{}
 	m.turnOn()
@@ -41,4 +56,5 @@ func main() {
 	test("Hello")
 	test(true)
 	test(3.14)
+	checkInt(11.11)
 }
