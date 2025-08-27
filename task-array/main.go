@@ -32,12 +32,27 @@ func main() {
 	courseGoal = append(courseGoal, "Build Go projects")
 	fmt.Println("Course Goals:", courseGoal)
 
-	var product1 = Product{
-		title:     "A4 Tech mouse",
-		id:        "P001",
-		price:     29.99,
-		createdAt: time.Now(),
+	products := []Product{
+		{
+			"mouse",
+			"11",
+			23.99,
+			time.Now(),
+		},
+		{
+			"keyboard",
+			"12",
+			29.99,
+			time.Now(),
+		},
 	}
 
-	fmt.Println(product1)
+	products = append(products, Product{
+		"headphone",
+		"17",
+		29.54,
+		time.Now(),
+	})
+
+	fmt.Println(products)
 }
