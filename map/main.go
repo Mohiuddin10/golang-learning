@@ -13,8 +13,14 @@ func main() {
 	// assign value
 	website[4] = "https://www.example.edu"
 	fmt.Println(website)
+	// get len & cap
+	fmt.Println(len(website))
 
 	// delete key/value
 	delete(website, 2)
 	fmt.Println(website)
+
+	// get len & cap
+	fmt.Println(len(website))
+
 }
