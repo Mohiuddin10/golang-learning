@@ -1,15 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
-	number1 := 32
-	fmt.Println(number1)
-	add(&number1, 10)
-	fmt.Println(number1)
+	fmt.Println("Hello, World!")
+	go add(1, 3)
+	time.Sleep(2 * time.Second)
+	fmt.Println("after 2 sec")
+	time.Sleep(6 * time.Second)
+	fmt.Println("after 6 sec")
+
 }
 
-func add(x *int, y int) {
-	*x = *x + y
-	fmt.Println("The result is:", *x)
+func add(x int, y int) {
+	time.Sleep(1 * time.Second)
+	fmt.Println("The result is:", x+y)
 }
