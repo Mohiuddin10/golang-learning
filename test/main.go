@@ -7,7 +7,7 @@ import (
 
 func main() {
 	fmt.Println("Hello, World!")
-	go add(1, 3)
+	add(1, 3)
 	time.Sleep(2 * time.Second)
 	fmt.Println("after 2 sec")
 	time.Sleep(6 * time.Second)
@@ -16,6 +16,7 @@ func main() {
 }
 
 func add(x int, y int) {
-	time.Sleep(1 * time.Second)
+	time.Sleep(3 * time.Second)
 	fmt.Println("The result is:", x+y)
+	fmt.Println("Result:", x-y)
 }
