@@ -3,24 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	var website = map[int]string{
-		1: "https://www.example.com",
-		2: "https://www.example.org",
-		3: "https://www.example.net",
-	}
-	fmt.Println(website)
-	fmt.Println(website[2])
-	// assign value
-	website[4] = "https://www.example.edu"
-	fmt.Println(website)
-	// get len & cap
-	fmt.Println(len(website))
-
-	// delete key/value
-	delete(website, 2)
-	fmt.Println(website)
-
-	// get len & cap
-	fmt.Println(len(website))
-
+	userName := []string{}
+	userName = append(userName, "Mohammad")
+	userName = append(userName, "Mohiuddin")
+	userName = append(userName, "Sujon")
+	userName = append(userName, "Mainudddin")
+	userName = append(userName, "Sumon")
+	fmt.Println(userName)
+	fmt.Println(len(userName))
+	fmt.Println(cap(userName))
 }
