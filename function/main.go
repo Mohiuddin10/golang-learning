@@ -7,6 +7,8 @@ package main
 
 import "fmt"
 
+type multyplayByO func(int, int) int
+
 func main() {
 	numbers := []int{1, 2, 3, 4}
 	double := doubleNumbers(&numbers)
@@ -56,10 +58,10 @@ func multiplyBy(n int) int {
 	return n * 3
 }
 
-func multiplayOp(numbers *[]int, f func(int, int) int, mNum int) []int {
+func multiplayOp(numbers *[]int, multyplayByO multyplayByO, mNum int) []int {
 	newNumbers := []int{}
 	for _, v := range *numbers {
-		newNumbers = append(newNumbers, f(v, mNum))
+		newNumbers = append(newNumbers, multyplayByO(v, mNum))
 	}
 	return newNumbers
 }
