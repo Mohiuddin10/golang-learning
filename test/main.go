@@ -1,22 +1,30 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
+import "fmt"
 
-func main() {
-	fmt.Println("Hello, World!")
-	add(1, 3)
-	time.Sleep(2 * time.Second)
-	fmt.Println("after 2 sec")
-	time.Sleep(6 * time.Second)
-	fmt.Println("after 6 sec")
+type Operation func(int, int) int
 
+func add(a, b int) int {
+	return a + b
 }
 
-func add(x int, y int) {
-	time.Sleep(3 * time.Second)
-	fmt.Println("The result is:", x+y)
-	fmt.Println("Result:", x-y)
+func minus(a, b int) int {
+	return a - b
+}
+
+func multiplay(a, b int) int {
+	return a * b
+}
+func main() {
+
+	f := Operation(add)
+
+	fmt.Println("10 + 5 =", f(10, 5))
+
+	g := Operation(minus)
+
+	fmt.Println("10 - 5 =", g(10, 5))
+	h := Operation(multiplay)
+	fmt.Println("10 * 5 =", h(10, 5))
+
 }
