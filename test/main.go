@@ -8,7 +8,7 @@ func makeAdder(x int) func(int) int {
 	}
 }
 
-func transformNumber(x *[]int, f func(int) int) int{
+func transformNumber(x *[]int, f func(int) int) int {
 	if (*x)[0] > 10 {
 		doubleNumber := []int{}
 		for _, v := range *x {
@@ -33,5 +33,8 @@ func main() {
 
 	add20 := makeAdder(30)
 	fmt.Println(add20(20))
+
+	add50 := makeAdder(50)
+	fmt.Println(add50(50))
 
 }
