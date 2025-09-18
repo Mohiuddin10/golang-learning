@@ -14,6 +14,9 @@ func aboutHandler(w http.ResponseWriter, r *http.Request) {
 func contact(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Hello from server cntact info")
 }
+func home(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Hello from server of home")
+}
 
 func main() {
 	mux := http.NewServeMux()
@@ -22,6 +25,8 @@ func main() {
 	mux.HandleFunc("/about", aboutHandler)
 
 	mux.HandleFunc("/contact", contact)
+
+		mux.HandleFunc("/home", home)
 
 	fmt.Println("server is running at port: 3000")
 
