@@ -26,7 +26,7 @@ func main() {
 
 	mux.HandleFunc("/contact", contact)
 
-		mux.HandleFunc("/home", home)
+	mux.HandleFunc("/home", home)
 
 	fmt.Println("server is running at port: 3000")
 
